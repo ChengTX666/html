@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        div>label{
+            color:gold;
+        }
+    </style>
+</head>
+<body>
+个人信息
+<form action="/register" method="post">
+    <div>
+        用户名:<input type="text" name="id"><br>
+        密码: <input type="password" name="password"><br>
+        <label>性别:</label>
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <label for="male">男</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">女</label><br>
+        生日：<input type="date" name="date"><br>
+        籍贯:<input type="text" name="address" list="address-list">
+        <datalist id="address-list">
+            <option value="北京"></option>
+            <option value="上海"></option>
+            <option value="广州"></option>
+            <option value="深圳"></option>
+            <option value="焦作"></option>
+        </datalist><br>
+        学历：<select name="xueli" id="xueli">
+        <option value="Bachelor">学士</option>
+        <option value="Master">硕士</option>
+        <option value="Doctor">博士</option>
+    </select>
+    </div>
+    <hr>
+    <div>
+        其他信息：<br>
+        喜欢的课程：<br>
+        <input type="checkbox" name="kecheng" value="web" checked>Web开发技术<br>
+        <input type="checkbox" name="kecheng" value="java">Java程序设计 <br>
+        <input type="checkbox" name="kecheng" value="DB">数据库系统原理 <br>
+        <input type="checkbox" name="kecheng" value="system">系统分析与测试
+    </div>
+    照片：<input type="file" ><br>
+    <button type="submit">提交</button>
+    <button type="reset">重置</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="register">
+    <output-path>$PROJECT_DIR$/out/artifacts/register</output-path>
+    <root id="archive" name="register.war">
+      <element id="javaee-facet-resources" facet="web-example01/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="web-example01" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
