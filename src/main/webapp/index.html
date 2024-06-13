@@ -3,14 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a{
+            text-decoration: none;
+            color: #d5e823;
+            font-size:30px
+        }
+        .main-nav{
+            border: 1px;
+            background: rgb(111, 111, 180);
+        }
+    .main-nav>ul {
+        position: relative;
+        display: flex;
+    }
+
+    .main-nav li{
+        padding: 15px;
+    }
+    .main-nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .parent-menu {
+        position: relative; /* 为每个顶级菜单项设置相对定位 */
+    }
+
+    .sub-menu {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        display: none;
+        background-color: rgb(152, 152, 224);
+        min-width: 200px;
+    }
+
+    .parent-menu:hover .sub-menu {
+        display: block;
+    }</style>
 </head>
 <body>
-<p>HTML</p>
-<ul>
-  <li><a href="register.html" target="_blank">注册</a></li>
+<nav class="main-nav">
 
-  <li><a href="course.html" target="_blank">选课</a></li>
-
-</ul>
+    <ul>
+    <li><a href="#">首页</a></li>
+        <li class="parent-menu">
+            <a href="#">HTML</a>
+            <ul class="sub-menu">
+                <li><a href="HTML/register.html">注册</a></li>
+                <li><a href="#">子页面2</a></li>
+                <li><a href="#">子页面3</a></li>
+            </ul>
+        </li>
+        <li class="parent-menu">
+            <a href="#">CSS</a>
+            <ul class="sub-menu">
+                <li><a href="CSS/course.html">选课</a></li>
+                <li><a href="CSS/layout.html">导航</a></li>
+                <li><a href="#">广告</a></li>
+            </ul>
+        </li>
+        <li class="parent-menu">
+            <a href="#">JavaScript</a>
+            <ul class="sub-menu">
+                <li><a href="JavaScript/QianFenWei.html">千分位</a></li>
+                <li><a href="JavaScript/ShouFengQin.html">手风琴</a></li>
+                <li><a href="JavaScript/XuanKe.html">选课</a></li>
+                <li><a href="JavaScript/course-conflict.html">课程冲突</a></li>
+                <li><a href="JavaScript/course-plus.html">课程冲突改</a></li>
+            </ul>
+        </li>
+        <li style="margin-left: auto"><a href="https://github.com/ChengTX666">程天鑫的github</a></li>
+    </ul>
+</nav>
 </body>
 </html>
