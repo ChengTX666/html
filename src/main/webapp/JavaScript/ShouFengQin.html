@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .sidebar {
+            margin: 15px;
+            width: 300px;
+            background: #f1f1f1;
+        }
+        .sidebar-group ul {
+            list-style: none;
+            display: none;
+        }
+        .sidebar-group > h2 {
+            padding: 15px 20px;
+            background: rgb(90, 180, 90);
+            color: white;
+        }
+        .sidebar-group > h2:hover {
+            cursor: pointer;
+            background: #000;
+        }
+        .sidebar-group li a {
+            display: block;
+            color: black;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .sidebar-group li a:hover {
+            font-weight: bold;
+            background-color: #5555;
+            color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-group">
+        <h2>云技术管理</h2>
+        <ul>
+            <li><a href="#">云服务器</a></li>
+            <li><a href="#">云数据库</a></li>
+            <li><a href="#">负载均衡</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-group">
+        <h2>安全管理</h2>
+        <ul>
+            <li><a href="#">云盾防火墙</a></li>
+            <li><a href="#">DDoS高防IP</a></li>
+            <li><a href="#">Web防火墙</a></li>
+            <li><a href="#">CA证书服务</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.sidebar-group>h2').click(function () {
+            let ul = $(this).next('ul')
+            ul.slideToggle()
+            $('ul').not(ul).slideUp()
+        })
+    })
+</script>
+</body>
+</html>

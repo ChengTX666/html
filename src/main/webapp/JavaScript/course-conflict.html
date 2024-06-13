@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        td {
+            padding: 10px;
+        }
+        table {
+            background: rgb(190, 229, 133);
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<table id="table">
+    <tr class="head">
+        <td>名称</td>
+        <td>学分</td>
+        <td>起始周</td>
+        <td>时间</td>
+        <td>教师</td>
+        <td>操作</td>
+    </tr>
+</table>
+
+<script>
+    const courses = [
+        {
+            id: 100,
+            name: '数据库原理',
+            point: 3.0,
+            startWeek: 1,
+            endWeek: 10,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '谭文韬'
+        },
+        {
+            id: 101,
+            name: '影视赏析',
+            point: 1.5,
+            startWeek: 1,
+            endWeek: 8,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '李春泰'
+        },
+        {
+            id: 102,
+            name: 'Web系统框架',
+            point: 2.5,
+            startWeek: 11,
+            endWeek: 17,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '王子阳'
+        },
+        {
+            id: 103,
+            name: '托福阅读',
+            point: 2.0,
+            startWeek: 5,
+            endWeek: 15,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '李景阳'
+        },
+        {
+            id: 104,
+            name: 'Web开发技术',
+            point: 2.5,
+            startWeek: 1,
+            endWeek: 8,
+            dayOfWeek: 1,
+            period: 34,
+            teacherName: '徐懿'
+        },
+        {
+            id: 105,
+            name: '高级英语视听',
+            point: 2.0,
+            startWeek: 3,
+            endWeek: 10,
+            dayOfWeek: 1,
+            period: 34,
+            teacherName: '龙超悦'
+        }
+    ]
+    //数据的初始化
+    for (let i = 0; i < courses.length; i++) {
+        let id = courses[i].id
+        let name = courses[i].name
+        let point = courses[i].point
+        let week = courses[i].startWeek + '-' + courses[i].endWeek
+        let time = '周' + courses[i].dayOfWeek + '/' + courses[i].period + '节'
+        let teacherName = courses[i].teacherName
+        $('#table').append(`<tr><td>${name}</td><td>${point}</td><td>
+        ${week}</td><td>${time}</td><td>${teacherName}</td>
+        <td><input type="checkbox" name="kecheng" id=${id}></td> </tr>`)
+    }
+    //coursemap id映射课程对象
+    const coursemap = new Map()
+    for (let x of courses) {
+        coursemap.set(x.id, x)
+    }
+    //
+    $(function () {
+        const map = new Map()
+        $('input').change(function () {
+            $('tr').css('background', 'rgb(190, 229, 133)')
+            if (map.has(+this.id) == false) {
+                let set = new Set()
+                for (let i = 0; i < courses.length; i++) {
+                    let course = coursemap.get(+this.id)
+                    if (
+                        this.id != courses[i].id &&
+                        courses[i].period == course.period &&
+                        courses[i].dayOfWeek == course.dayOfWeek &&
+                        !(course.endWeek < courses[i].startWeek || course.startWeek > courses[i].endWeek)
+                    )
+                        set.add(courses[i].id)
+                }
+                map.set(+this.id, set)
+            }
+            $('input').prop('disabled', false)
+            let ckids = []
+            document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+                if (checkbox.checked) ckids.push(checkbox.id)
+            })
+            for (let ckid of ckids) {
+                let setId = map.get(+ckid)
+                for (let x of setId) {
+                    $('#' + x).prop('disabled', true)
+                    $('#' + x)
+                        .parent() //td
+                        .parent() //tr
+                        .css('background-color', 'red')
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<input type="text" id="input" />
+<input type="submit" onclick="inputV()" />
+
+<script>
+    function inputV() {
+        let inputValue = $('#input').val()
+        let count = 0
+        let res = ''
+        if(inputValue[0]=='-'){
+            for (let i = inputValue.length - 1; i > 0; i--) {
+                res = inputValue[i] + res
+                count++
+                if (count % 3 == 0&& i != 1) {
+                    res = ',' + res
+                }
+            }
+            res='-'+res
+        }
+        else {
+        for (let i = inputValue.length - 1; i >= 0; i--) {
+            res = inputValue[i] + res
+            count++
+            if (count % 3 == 0 && i != 0) {
+                res = ',' + res
+            }
+        }}
+        alert('转化为千分位为:'+res)
+        $('#input').val(res)
+    }
+</script>
+</body>
+</html>
